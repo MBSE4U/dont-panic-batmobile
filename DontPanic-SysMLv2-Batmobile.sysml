@@ -165,8 +165,8 @@ package Dont_Panic_Batmobile {
         doc /* The actual speed of the vehicle shall 
              * be less than the maximum speed.
              */
-        stakeholder pm : ProductManagement;
         subject vehicle : Vehicle;
+        stakeholder pm : ProductManagement;
         attribute maxSpeed : SI::SpeedUnit;
         require constraint 
             {vehicle.actualSpeed < maxSpeed}
