@@ -107,12 +107,12 @@ package Dont_Panic_Batmobile {
     // In the book, "bm1" is just a part, and Batmobile a part definition except in the paragraph where we explain the language extension.
     #system bm1 : Batmobile {
         timeslice batmanDriving {
-            :>> driver : Batman;
-            snapshot :>> start {:>> battery.capacity = 40000 [SI::'watt hour'];}
-            snapshot :>> done {:>> battery.capacity = 42 [SI::'watt hour'];}
+            item :>> driver : Batman;
+            snapshot :>> start {attribute :>> battery.capacity = 40000 [SI::'watt hour'];}
+            snapshot :>> done {attribute :>> battery.capacity = 42 [SI::'watt hour'];}
         }
          then timeslice charging {
-            :>> driver = null;
+            item :>> driver = null;
          }
     }
       
