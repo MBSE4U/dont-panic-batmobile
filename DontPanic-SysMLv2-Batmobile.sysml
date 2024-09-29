@@ -16,7 +16,7 @@ package Dont_Panic_Batmobile {
     part def Vehicle {
         item driver;
         part engine;
-        attribute actualSpeed : SI::SpeedUnit;
+        attribute actualSpeed :> ISQ::speed;
     }
     
     // Interface for a power connection
@@ -37,9 +37,9 @@ package Dont_Panic_Batmobile {
     // Definition of a wheel with a bounding box
     part def Wheel {
         item boundingBox : ShapeItems::Box [1] :> boundingShapes {
-            :>> length : ISQ::LengthUnit = 80 [SI::cm];
-            :>> width : ISQ::LengthUnit  = 26 [SI::cm];
-            :>> height : ISQ::LengthUnit = 80 [SI::cm];
+            attribute :>> length :> ISQ::length = 80 [SI::cm];
+            attribute :>> width :> ISQ::length  = 26 [SI::cm];
+            attribute :>> height :> ISQ::length = 80 [SI::cm];
         }
         attribute pressure;
     }
@@ -104,7 +104,7 @@ package Dont_Panic_Batmobile {
     //
     
     // Since we introduced the language extension "system" and used it for the definition of Batmobile, the part must also use the extension.
-    // In the book, "bm1" is just a part and Batmobile a part definition except in the paragraph where we explain the language extension.
+    // In the book, "bm1" is just a part, and Batmobile a part definition except in the paragraph where we explain the language extension.
     #system bm1 : Batmobile {
         timeslice batmanDriving {
             :>> driver : Batman;
@@ -165,9 +165,9 @@ package Dont_Panic_Batmobile {
         doc /* The actual speed of the vehicle shall 
              * be less than the maximum speed.
              */
-        stakeholder pm : ProductManagement;
         subject vehicle : Vehicle;
-        attribute maxSpeed : SI::SpeedUnit;
+        stakeholder pm : ProductManagement;        
+        attribute maxSpeed :> ISQ::speed;
         require constraint 
             {vehicle.actualSpeed < maxSpeed}
     }
@@ -176,7 +176,7 @@ package Dont_Panic_Batmobile {
     requirement batmobileSpecification {    
         requirement <'REQ42'> 
             batmobileMaxSpeed : VehicleMaxSpeed {
-                :>> maxSpeed = 230 [SI::'km/h'];
+                attribute :>> maxSpeed = 230 [SI::'km/h'];
         }
         requirement <'REQ43'> 
             batmobileAcceleration;
@@ -261,8 +261,8 @@ package Dont_Panic_Batmobile {
     
     // Configuration
     part def BatmobileConfigurations :> Batmobile {
-        variation part :>> batmobileEngine : EngineChoices;
-        variation part :>> wheels[4] : WheelChoices;
+        part :>> batmobileEngine : EngineChoices;
+        part :>> wheels[4] : WheelChoices;
 
         assert constraint {
             (batmobileEngine == batmobileEngine::xEngine and 
@@ -272,8 +272,7 @@ package Dont_Panic_Batmobile {
     
     // Member Product
     part def XBatmobile :> BatmobileConfigurations {
-      :>> batmobileEngine = batmobileEngine.xEngine;
-      :>> wheels = wheels.xWheel;
-    }
-    
+      part :>> batmobileEngine = batmobileEngine.xEngine;
+      part :>> wheels = wheels.xWheel;
+    }   
 }
