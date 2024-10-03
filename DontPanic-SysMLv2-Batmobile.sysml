@@ -165,7 +165,7 @@ package Dont_Panic_Batmobile {
     
     requirement def VehicleMaxSpeed {
         doc /* The actual speed of the vehicle shall 
-             * be less than the maximum speed.
+             * be less or equal than the maximum speed.
              */
         subject vehicle : Vehicle;
         stakeholder pm : ProductManagement;        
