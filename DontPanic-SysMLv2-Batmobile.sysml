@@ -171,7 +171,7 @@ package Dont_Panic_Batmobile {
         stakeholder pm : ProductManagement;        
         attribute maxSpeed :> ISQ::speed;
         require constraint 
-            {vehicle.actualSpeed < maxSpeed}
+            {vehicle.actualSpeed <= maxSpeed}
     }
     item def ProductManagement;
     
