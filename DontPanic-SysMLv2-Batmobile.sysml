@@ -86,7 +86,9 @@ package Dont_Panic_Batmobile {
 
     // A special version: the Batmobile Next Generation
     part def BatmobileNG :> Batmobile {
-        part bulletProofWheels[4] :>> wheels;
+        part bulletProofWheels[4] :>> wheels {
+            part metalCoating;
+        }
     }
     
 
