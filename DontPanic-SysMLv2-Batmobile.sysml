@@ -100,7 +100,9 @@ package Dont_Panic_Batmobile {
 
     // A special version: the Batmobile Next Generation
     part def BatmobileNG :> Batmobile {
-        part bulletProofWheels[4] :>> wheels;
+        part bulletProofWheels[4] :>> wheels {
+            part metalCoating;
+        }
     }
     
 
@@ -177,13 +179,13 @@ package Dont_Panic_Batmobile {
     
     requirement def VehicleMaxSpeed {
         doc /* The actual speed of the vehicle shall 
-             * be less than the maximum speed.
+             * be less or equal than the maximum speed.
              */
         subject vehicle : Vehicle;
         stakeholder pm : ProductManagement;        
         attribute maxSpeed :> ISQ::speed;
         require constraint 
-            {vehicle.actualSpeed < maxSpeed}
+            {vehicle.actualSpeed <= maxSpeed}
     }
     item def ProductManagement;
     
