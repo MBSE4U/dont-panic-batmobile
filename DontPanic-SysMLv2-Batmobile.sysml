@@ -6,6 +6,20 @@ package Dont_Panic_Batmobile {
          *
          * The book provides an overview of SysML v2, so it is a small example with many snippets shown throughout the book. 
          * There is therefore also no sophisticated package structure. All elements are in one package.
+         *
+         * Copyright (c) 2023 Tim Weilkiens, Christian Muggeo
+         *
+         *  Licensed under the Apache License, Version 2.0 (the "License");
+         *  you may not use this file except in compliance with the License.
+         *  You may obtain a copy of the License at
+         *
+         *  http://www.apache.org/licenses/LICENSE-2.0
+         *
+         *  Unless required by applicable law or agreed to in writing, software
+         *  distributed under the License is distributed on an "AS IS" BASIS,
+         *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+         *  See the License for the specific language governing permissions and
+         *  limitations under the License.
          */
         
     //
@@ -61,7 +75,7 @@ package Dont_Panic_Batmobile {
     //
     // The Batmobile
     //
-    #system def Batmobile :> Vehicle {
+    #system part def Batmobile :> Vehicle {
         :>> problemStatement := "As a Hero, Batman needs a cool vehicle.";
         :>> systemIdea := "The Batmobile is a black vehicle...";      
         
@@ -105,7 +119,7 @@ package Dont_Panic_Batmobile {
     
     // Since we introduced the language extension "system" and used it for the definition of Batmobile, the part must also use the extension.
     // In the book, "bm1" is just a part, and Batmobile a part definition except in the paragraph where we explain the language extension.
-    #system bm1 : Batmobile {
+    #system part bm1 : Batmobile {
         timeslice batmanDriving {
             item :>> driver : Batman;
             snapshot :>> start {attribute :>> battery.capacity = 40000 [SI::'watt hour'];}
