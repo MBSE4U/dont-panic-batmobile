@@ -6,6 +6,6 @@ The example is available as a text file as
 * **SysML v2 textual notation** and a
 * **Jupyter notebook** file.
 
-The book is available at https://incoseuk.org/Program_Files/Store/Default as
+The book is available at [https://incoseuk.org/Program_Files/Store/Default](https://ifse.org.uk/Program_Files/Store/Default) as
 * Softcover: ISBN 978-1-7394631-0-6
 * E-Book: ISBN 978-1-7394631-1-3 
